@@ -265,17 +265,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1169849757}
-  - component: {fileID: 1169849756}
   - component: {fileID: 1169849755}
-  - component: {fileID: 1169849754}
   m_Layer: 0
   m_Name: pendulo
-  m_TagString: Untagged
+  m_TagString: pendulo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1169849754
+--- !u!114 &1169849755
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -284,58 +282,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1169849753}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18ae6973b3c7aa0498277bbe08075885, type: 3}
+  m_Script: {fileID: 11500000, guid: 49e82c0192a240f4f946b0db769b35e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftLimit: 0.1
-  rightLimit: 0.1
-  initSpeed: 20
-  speed: 20
---- !u!233 &1169849755
-HingeJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169849753}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0, y: 0.5}
-  m_ConnectedAnchor: {x: -0.076, y: 8.72}
-  m_UseMotor: 0
-  m_Motor:
-    m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
-  m_UseLimits: 0
-  m_AngleLimits:
-    m_LowerAngle: 0
-    m_UpperAngle: 359
---- !u!50 &1169849756
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169849753}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  pivotPoint: {fileID: 1169849757}
+  MaxAngleDeflection: 30
+  SpeedOfPendulum: 1
 --- !u!4 &1169849757
 Transform:
   m_ObjectHideFlags: 0

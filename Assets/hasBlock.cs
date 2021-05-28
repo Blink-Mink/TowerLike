@@ -18,7 +18,7 @@ public class hasBlock : MonoBehaviour
 
     public void GenerateNewBlock()
     {
-        GameObject myBlock = Instantiate(blockObj, transform.position, Quaternion.identity);
+        GameObject myBlock = Instantiate(blockObj, transform.position, transform.rotation);
         myBlock.transform.parent = gameObject.transform;
     }
 }

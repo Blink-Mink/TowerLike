@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4741290153046276338}
   - component: {fileID: 4741290153046276339}
-  - component: {fileID: 4741290153046276301}
   - component: {fileID: 4741290153046276300}
+  - component: {fileID: 5634774422421272156}
   m_Layer: 0
   m_Name: vent
   m_TagString: block
@@ -84,19 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4741290153046276301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4741290153046276336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8546c1a541a4acb4a83bbc68a8152355, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 0}
 --- !u!61 &4741290153046276300
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,3 +110,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 18.9, y: 18.9}
   m_EdgeRadius: 0
+--- !u!114 &5634774422421272156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741290153046276336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8546c1a541a4acb4a83bbc68a8152355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 0}
+  pendulo: {fileID: 0}
