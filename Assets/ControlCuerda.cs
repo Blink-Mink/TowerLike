@@ -13,21 +13,25 @@ public class ControlCuerda : MonoBehaviour
     public bool DoCraneOut;
 
     //Variables No Mostradas en el Editor
-    private bool DoCraneIn;   
+    private bool DoCraneIn;
+    private GameObject spawnPoint;
+    private Transform pendulo;
 
 
     void Start()
     {       
         DoCraneIn = false;
         DoCraneOut = false;
+        spawnPoint = GameObject.FindGameObjectWithTag("blockSpawn");
+        pendulo = GameObject.FindGameObjectWithTag("pendulo").transform;
     }
 
     private void Update()
     {
-        if (transform.position.y <= 8.22f)
+        if (pendulo.position.y <= 8.22f)
         {           
             DoCraneIn = false;
-            GetComponent<GenerateBlock>().EnableBlockInput();
+            spawnPoint.GetComponent<BlockInput>().EnableBlockInput();
         }
 
         if (DoCraneOut)
@@ -43,23 +47,23 @@ public class ControlCuerda : MonoBehaviour
 
     public void CraneOut()
     {
-        var pendPos = transform.position;
+        var pendPos = pendulo.position;
         pendPos.y += outSpeed * Time.deltaTime;
-        transform.position = pendPos;
-        if (transform.position.y > 13)
+        pendulo.position = pendPos;
+        if (pendulo.position.y > 13)
         {
-            GetComponent<GenerateBlock>().DisableBlockInput();
+            spawnPoint.GetComponent<BlockInput>().DisableBlockInput();
             DoCraneOut = false;
-            GetComponent<GenerateBlock>().GenerateNewBlock();
+            spawnPoint.GetComponent<GenerateBlock>().GenerateNewBlock();
             DoCraneIn = true;
         }
     }
 
     public void CraneIn()
     {
-        var pendPos = transform.position;
+        var pendPos = pendulo.position;
         pendPos.y -= inSpeed * Time.deltaTime;
-        transform.position = pendPos;
+        pendulo.position = pendPos;
     }
     
 }

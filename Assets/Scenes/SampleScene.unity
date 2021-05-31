@@ -132,6 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 404046996}
+  - component: {fileID: 404046998}
+  - component: {fileID: 404046997}
   m_Layer: 0
   m_Name: spwnBlock
   m_TagString: blockSpawn
@@ -153,6 +155,32 @@ Transform:
   m_Father: {fileID: 1422705059}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &404046997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404046995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f1da2e262103294f85e5c2a738d4b6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &404046998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404046995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8197f4c72ee01204d866c856c4a081dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockObj: {fileID: 4741290153046276336, guid: 59f7ea83257329c48a4509e507e0860a, type: 3}
+  lastBlock: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,8 +274,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1169849757}
   - component: {fileID: 1169849756}
-  - component: {fileID: 1169849755}
-  - component: {fileID: 1169849754}
   m_Layer: 0
   m_Name: pendulo
   m_TagString: pendulo
@@ -255,34 +281,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1169849754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169849753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8197f4c72ee01204d866c856c4a081dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blockObj: {fileID: 4741290153046276336, guid: 59f7ea83257329c48a4509e507e0860a, type: 3}
---- !u!114 &1169849755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169849753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86a55974eb093f044a99339f7924f7fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outSpeed: 1
-  inSpeed: 2
-  DoCraneOut: 0
 --- !u!114 &1169849756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,7 +293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e82c0192a240f4f946b0db769b35e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pivotPoint: {fileID: 1169849757}
   MaxAngleDeflection: 30
   SpeedOfPendulum: 1
 --- !u!4 &1169849757
@@ -323,9 +320,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1422705059}
   - component: {fileID: 1422705058}
+  - component: {fileID: 1422705060}
   m_Layer: 0
   m_Name: cuerda
-  m_TagString: Untagged
+  m_TagString: cuerda
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -396,6 +394,21 @@ Transform:
   m_Father: {fileID: 1169849757}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1422705060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422705057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a55974eb093f044a99339f7924f7fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outSpeed: 1
+  inSpeed: 2
+  DoCraneOut: 0
 --- !u!1 &1523888349
 GameObject:
   m_ObjectHideFlags: 0
