@@ -6,7 +6,7 @@ public class ControlCuerda : MonoBehaviour
 {
     [Header("Velocidades Cuerda")]
     [SerializeField] private float outSpeed = 1f;
-    [SerializeField] private float inSpeed = 2f;   
+    [SerializeField] private float inSpeed = 2f;
 
 
     [Header("Variables Públicas No Editables")]
@@ -16,10 +16,11 @@ public class ControlCuerda : MonoBehaviour
     private bool DoCraneIn;
     private GameObject spawnPoint;
     private Transform pendulo;
-
+    bool infLim;
+    bool supLim;
 
     void Start()
-    {       
+    {
         DoCraneIn = false;
         DoCraneOut = false;
         spawnPoint = GameObject.FindGameObjectWithTag("blockSpawn");
@@ -28,8 +29,8 @@ public class ControlCuerda : MonoBehaviour
 
     private void Update()
     {
-        if (pendulo.position.y <= 8.22f)
-        {           
+        if (infLim)
+        {
             DoCraneIn = false;
             spawnPoint.GetComponent<BlockInput>().EnableBlockInput();
         }
@@ -45,12 +46,19 @@ public class ControlCuerda : MonoBehaviour
         }
     }
 
+    public void CraneIn()
+    {
+        var pendPos = pendulo.position;
+        pendPos.y -= inSpeed * Time.deltaTime;
+        pendulo.position = pendPos;
+    } 
+
     public void CraneOut()
     {
         var pendPos = pendulo.position;
         pendPos.y += outSpeed * Time.deltaTime;
         pendulo.position = pendPos;
-        if (pendulo.position.y > 13)
+        if (supLim)
         {
             spawnPoint.GetComponent<BlockInput>().DisableBlockInput();
             DoCraneOut = false;
@@ -59,11 +67,27 @@ public class ControlCuerda : MonoBehaviour
         }
     }
 
-    public void CraneIn()
+    public void MoveCrane(int lim)
     {
-        var pendPos = pendulo.position;
-        pendPos.y -= inSpeed * Time.deltaTime;
-        pendulo.position = pendPos;
+        if (lim == 0)
+        {
+            infLim = false;
+        }
+        else if (lim == 1)
+        {
+            supLim = false;
+        }
     }
-    
+
+    public void StopCrane(int lim)
+    {
+        if (lim == 0)
+        {
+            infLim = true;
+        }
+        else if (lim == 1)
+        {
+            supLim = true;
+        }
+    }
 }
