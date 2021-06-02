@@ -96,8 +96,7 @@ public class ControlCuerda : MonoBehaviour
     public void StopCrane(int lim)
     {
         if (lim == 0)
-        {
-            print(pendulo.position.y);
+        {           
             infLim = true;
         }
         else if (lim == 1)
