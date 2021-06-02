@@ -15,8 +15,7 @@ public class ControlCamara : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cam = GetComponent<Camera>();
-        planes = GeometryUtility.CalculateFrustumPlanes(cam);
+        cam = GetComponent<Camera>();        
         blocksOnScreen = new List<GameObject>();
     }
 

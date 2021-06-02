@@ -22,17 +22,27 @@ public class ControlCuerda : MonoBehaviour
     void Start()
     {
         DoCraneIn = false;
-        DoCraneOut = false;
+        DoCraneOut = false;      
         spawnPoint = GameObject.FindGameObjectWithTag("blockSpawn");
         pendulo = GameObject.FindGameObjectWithTag("pendulo").transform;
+        pendulo.gameObject.GetComponent<Irregularity>().enabled = false;
     }
 
     private void Update()
     {
         if (infLim)
-        {
+        {           
             DoCraneIn = false;
             spawnPoint.GetComponent<BlockInput>().EnableBlockInput();
+        }
+
+        if(!DoCraneIn && !DoCraneOut)
+        {
+            Invoke("StartIr",1f);            
+        }
+        else
+        {
+            pendulo.gameObject.GetComponent<Irregularity>().enabled = false;
         }
 
         if (DoCraneOut)
@@ -46,6 +56,10 @@ public class ControlCuerda : MonoBehaviour
         }
     }
 
+    public void StartIr()
+    {
+        pendulo.gameObject.GetComponent<Irregularity>().enabled = true;
+    }
     public void CraneIn()
     {
         var pendPos = pendulo.position;
@@ -83,6 +97,7 @@ public class ControlCuerda : MonoBehaviour
     {
         if (lim == 0)
         {
+            print(pendulo.position.y);
             infLim = true;
         }
         else if (lim == 1)
