@@ -8,6 +8,7 @@ public class ControlCamara : MonoBehaviour
 
     [SerializeField] private float speed;
     [SerializeField] private float cubosObjetivo;
+    [SerializeField] private float alturaObjetivo;
     GameObject[] blocks;
     List<GameObject> blocksOnScreen;
     Camera cam;
@@ -37,13 +38,28 @@ public class ControlCamara : MonoBehaviour
                     blocksOnScreen.Remove(block);
             }
         }
-        if(blocksOnScreen.Count >= cubosObjetivo)
+        if(blocksOnScreen.Count >= cubosObjetivo && GetComponent<AlturaTorre>().RetAltura() > alturaObjetivo)
         {
-            var tPos = transform.position;
-            tPos.y += speed * Time.deltaTime;
-            transform.position = tPos;
+            Subir();
+        }
+        else
+        {
+            NoSubir();
         }        
        
+    }
+
+
+    void Subir()
+    {
+        var tPos = transform.position;
+        tPos.y += speed * Time.deltaTime;
+        transform.position = tPos;
+    }
+
+    void NoSubir()
+    {
+
     }
 
 

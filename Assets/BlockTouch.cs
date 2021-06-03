@@ -14,7 +14,7 @@ public class BlockTouch : MonoBehaviour
     {      
         if (collision.gameObject.CompareTag("floor"))
         {
-            if(alturaTotal.altura < 1)
+            if(alturaTotal.RetAltura() < 1)
             {
                 alturaTotal.NuevoPiso();
                 floor = collision.gameObject;
@@ -36,8 +36,8 @@ public class BlockTouch : MonoBehaviour
     }
 
     void EditFloor()
-    {
-        GetComponent<Rigidbody2D>().isKinematic = true;
+    {        
+        GetComponentInParent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         var sz = floor.gameObject.transform.localScale;
         sz.x = transform.localScale.x/100f;
         sz.x *= 3.2f;

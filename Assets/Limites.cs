@@ -24,7 +24,7 @@ public class Limites : MonoBehaviour
             }
             else if (Limite == Limit.Inferior)
             {
-                collision.GetComponentInChildren<ControlCuerda>().StopCrane(0);
+                collision.GetComponentInChildren<ControlCuerda>().StopCrane(0);                
             }
         }      
     }
