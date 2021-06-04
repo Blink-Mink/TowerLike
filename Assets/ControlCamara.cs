@@ -6,47 +6,85 @@ using UnityEngine;
 public class ControlCamara : MonoBehaviour
 {
 
-    [SerializeField] private float speed;
-    [SerializeField] private float cubosObjetivo;
-    [SerializeField] private float alturaObjetivo;
-    GameObject[] blocks;
+    [SerializeField] private float speed = 1.2f;
+    [SerializeField] private float maximoDeBloquesEnPantalla = 4f;
+    [SerializeField] private float minimoDeAlturaParaSubir = 5f;
+    float cubosObjetivo;
+    float alturaObjetivo;
+    List <GameObject> blocks;   
     List<GameObject> blocksOnScreen;
     Camera cam;
     Plane[] planes;
+    bool yaBajate;
+    GameObject lastCube;
     // Start is called before the first frame update
     void Start()
     {
+        cubosObjetivo = maximoDeBloquesEnPantalla+1;
+        alturaObjetivo = minimoDeAlturaParaSubir;
         cam = GetComponent<Camera>();        
         blocksOnScreen = new List<GameObject>();
+        blocks = new List<GameObject>();
+        yaBajate = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        blocks = GameObject.FindGameObjectsWithTag("block");
+
+        // lastCube = GetComponent<AlturaTorre>().constructedBlocks[GetComponent<AlturaTorre>().constructedBlocks.Count - 1];
+        blocks = GetComponent<AlturaTorre>().constructedBlocks;
         foreach (GameObject block in blocks)
         {           
-            if (block.GetComponent<Renderer>().isVisible)
-            {
+            if (block.GetComponentInParent<Renderer>().isVisible)
+            {                
                 if (!blocksOnScreen.Contains(block))
+                {
                     blocksOnScreen.Add(block);
+                }                                   
             }
             else
             {
-                if (blocksOnScreen.Contains(block))
+                if (blocksOnScreen.Contains(block)) 
+                {
                     blocksOnScreen.Remove(block);
+                }
+                   
             }
-        }
-        if(blocksOnScreen.Count >= cubosObjetivo && GetComponent<AlturaTorre>().RetAltura() > alturaObjetivo)
+        }        
+        
+        
+        if(blocksOnScreen.Count >= cubosObjetivo && GetComponent<AlturaTorre>().RetAltura() >= alturaObjetivo)
         {
             Subir();
+            yaBajate = true;
         }
-        else
+              
+
+        if(blocks.Count >= alturaObjetivo)
         {
-            NoSubir();
-        }        
+            if (!blocksOnScreen.Contains(blocks[blocks.Count - 1]) && yaBajate == true)
+            {                
+                    Bajar();
+                
+            }          
+           
+        }          
        
+    }
+
+    public void PisoRemovido(GameObject obj)
+    {
+        blocksOnScreen.Remove(obj);
+    }
+    private void LateUpdate()
+    {
+        var fixY = gameObject.transform.position;
+        if(fixY.y < 0)
+        {
+            fixY.y = 0;
+        }
+        gameObject.transform.position = fixY;
     }
 
 
@@ -57,11 +95,13 @@ public class ControlCamara : MonoBehaviour
         transform.position = tPos;
     }
 
-    void NoSubir()
+    
+
+    void Bajar()
     {
-
+        var tPos = transform.position;        
+        tPos.y = blocks[blocks.Count - 1].transform.position.y;                
+        transform.position = tPos;
     }
-
-
    
 }

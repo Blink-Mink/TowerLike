@@ -5,10 +5,10 @@ using UnityEngine;
 public class BlockTouch : MonoBehaviour
 {
     AlturaTorre alturaTotal;
-    GameObject floor;
+    GameObject floor;   
     public void Start()
     {
-        alturaTotal = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AlturaTorre>();
+        alturaTotal = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AlturaTorre>();       
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {      
@@ -16,14 +16,14 @@ public class BlockTouch : MonoBehaviour
         {
             if(alturaTotal.RetAltura() < 1)
             {
-                alturaTotal.NuevoPiso();
+                alturaTotal.NuevoPiso(gameObject);
                 floor = collision.gameObject;
                 Invoke("EditFloor", 1f);
             }           
         }
         if(collision.gameObject.CompareTag("block"))
         {
-                alturaTotal.NuevoPiso();
+                alturaTotal.NuevoPiso(gameObject);
         }
     }
 
@@ -31,7 +31,7 @@ public class BlockTouch : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("block"))
         {
-            alturaTotal.RemoverPiso();
+            alturaTotal.RemoverPiso(gameObject);
         }
     }
 

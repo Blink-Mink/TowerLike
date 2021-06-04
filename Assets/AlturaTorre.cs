@@ -8,10 +8,12 @@ public class AlturaTorre : MonoBehaviour
 
     private int altura;
     public Text txtobj;
+    public List<GameObject> constructedBlocks;
     // Start is called before the first frame update
     void Start()
     {
         altura = 0;
+        constructedBlocks = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -24,13 +26,16 @@ public class AlturaTorre : MonoBehaviour
     {
         return altura;
     }
-    public void NuevoPiso()
+    public void NuevoPiso(GameObject objB)
     {
         altura++;
+        constructedBlocks.Add(objB);
     }
 
-    public void RemoverPiso()
+    public void RemoverPiso(GameObject objB)
     {
         altura--;
+        constructedBlocks.Remove(objB);
+        GetComponent<ControlCamara>().PisoRemovido(objB);
     }
 }
